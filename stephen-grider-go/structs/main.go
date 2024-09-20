@@ -10,17 +10,29 @@ type contactInfo struct {
 type person struct {
 	firstName string
 	lastName  string
-	contact   contactInfo
+	contactInfo
+	// contact contactInfo (variableName variableType) is an embedded struct
+	// Could also leave it as just contactInfo with no named variable, then when initializing
+	// You would construct it as contactInfo: contactInfo{blah}
 }
 
 func main() {
 	p := person{
 		firstName: "Alex",
 		lastName:  "Hewitt",
-		contact: contactInfo{
+		contactInfo: contactInfo{
 			email:   "test@mail.com",
 			zipCode: 55555,
 		},
 	}
-	fmt.Println(p)
+	p.updateName("Jim")
+	p.print()
+}
+
+func(p person) print() {
+	fmt.Printf("%+v", p)
+}
+
+func (p person) updateName(newFirstName string) {
+	p.firstName = newFirstName
 }
