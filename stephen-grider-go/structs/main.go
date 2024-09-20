@@ -25,7 +25,8 @@ func main() {
 			zipCode: 55555,
 		},
 	}
-	p.updateName("Jim")
+	pPtr := &p
+	pPtr.updateName("Jim")
 	p.print()
 }
 
@@ -33,6 +34,6 @@ func(p person) print() {
 	fmt.Printf("%+v", p)
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (pPtr *person) updateName(newFirstName string) {
+	(*pPtr).firstName = newFirstName
 }
