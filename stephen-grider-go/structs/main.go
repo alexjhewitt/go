@@ -25,7 +25,7 @@ func main() {
 			zipCode: 55555,
 		},
 	}
-	pPtr := &p
+	pPtr := &p // Memory address (pointer)
 	pPtr.updateName("Jim")
 	p.print()
 }
@@ -34,6 +34,7 @@ func(p person) print() {
 	fmt.Printf("%+v", p)
 }
 
+// Pointer that points at person
 func (pPtr *person) updateName(newFirstName string) {
 	(*pPtr).firstName = newFirstName
 }
