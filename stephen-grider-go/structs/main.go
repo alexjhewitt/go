@@ -25,12 +25,12 @@ func main() {
 			zipCode: 55555,
 		},
 	}
-	pPtr := &p // Memory address (pointer)
-	pPtr.updateName("Jim")
+
+	p.updateName("Jim") // Go figures out that the person type can be passed to updateName properly
 	p.print()
 }
 
-func(p person) print() {
+func (p person) print() {
 	fmt.Printf("%+v", p)
 }
 
