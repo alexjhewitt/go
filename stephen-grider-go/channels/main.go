@@ -13,9 +13,11 @@ func main() {
 		go checkLink(link, ch)
 	}
 
-	for {
-		go checkLink(<-ch, ch)
-		time.Sleep(time.Second * 5)
+	for l := range ch {
+		go func() { // Function literal (anonymous function)
+			time.Sleep(time.Second * 5)
+			checkLink(l, ch)
+		}() // Func call
 	}
 }
 
