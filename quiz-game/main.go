@@ -27,6 +27,9 @@ func main() {
 		q := line[0]
 		// a := line[1]
 		fmt.Printf("What is %s?\t", q)
+		userAnswer := ""
+		fmt.Scanln(&userAnswer)
+		fmt.Println(userAnswer)
 	}
 
 	// Ask next question
