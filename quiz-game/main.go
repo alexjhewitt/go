@@ -22,12 +22,10 @@ func main() {
 	}
 	r := csv.NewReader(file)
 	data, err := r.ReadAll()
-	timer := time.NewTimer(5 * time.Second)
-	for {
-		go runQuiz(data, &correctAnswers)
-		<-timer.C
-		break
-	}
+	timer := time.NewTimer(30 * time.Second)
+
+	go runQuiz(data, &correctAnswers)
+	<-timer.C
 
 	// Print total correct answers and total questions asked
 	fmt.Printf("\nYou answered %d questions correctly out of %d", correctAnswers, len(data))
