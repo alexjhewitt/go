@@ -9,4 +9,5 @@ A CLI quiz game that utilizes command-line flags, reading in a CSV, and timers.
 ## Flag options
 ```
 -f = filename of your quiz data
+-t = duration of time to complete quiz
 ```
