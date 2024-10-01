@@ -12,7 +12,8 @@ func main() {
 	// Keep track of right/wrong answers
 	correctAnswers := 0
 	// Flag creation
-	fileNamePtr := flag.String("f", "problems.csv", "Name of file with quiz questions")
+	fileNamePtr := flag.String("f", "problems.csv", "Name of file with quiz questions.")
+	timerPtr := flag.Int("t", 30, "Adjust the quiz game stop timer value.")
 	flag.Parse()
 
 	// Read in CSV and work with data
@@ -22,13 +23,13 @@ func main() {
 	}
 	r := csv.NewReader(file)
 	data, err := r.ReadAll()
-	timer := time.NewTimer(30 * time.Second)
+	timer := time.NewTimer(time.Duration(*timerPtr) * time.Second)
 
 	go runQuiz(data, &correctAnswers)
 	<-timer.C
 
 	// Print total correct answers and total questions asked
-	fmt.Printf("\nYou answered %d questions correctly out of %d", correctAnswers, len(data))
+	fmt.Printf("\nYou answered %d questions correctly out of %d.", correctAnswers, len(data))
 
 }
 
