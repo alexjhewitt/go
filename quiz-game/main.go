@@ -23,8 +23,10 @@ func main() {
 	}
 	r := csv.NewReader(file)
 	data, err := r.ReadAll()
-	timer := time.NewTimer(time.Duration(*timerPtr) * time.Second)
 
+	fmt.Println("Please press enter to begin.")
+	fmt.Scanln()
+	timer := time.NewTimer(time.Duration(*timerPtr) * time.Second)
 	go runQuiz(data, &correctAnswers)
 	<-timer.C
 
