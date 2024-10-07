@@ -24,6 +24,10 @@ func main() {
 	}
 	r := csv.NewReader(file)
 	data, err := r.ReadAll()
+	if err != nil {
+		fmt.Println("Failed to parse CSV file")
+		os.Exit(1)
+	}
 
 	fmt.Println("Please press enter to begin.")
 	fmt.Scanln()
