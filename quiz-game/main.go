@@ -20,6 +20,7 @@ func main() {
 	file, err := os.Open(*fileNamePtr)
 	if err != nil {
 		fmt.Println("Error:", err)
+		os.Exit(1)
 	}
 	r := csv.NewReader(file)
 	data, err := r.ReadAll()
